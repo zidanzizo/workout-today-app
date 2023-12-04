@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const double defaultBorder = 24;
+const double defaultMargin = 24;
 
 Color primaryColor = const Color(0xFFEE6044);
 Color purpleColor = const Color(0xFF5F3CF6);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_today_app/presentation/widgets/daily_stat_indicator_item.dart';
 import 'package:workout_today_app/shared/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,98 +10,110 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: defaultBorder),
-          children: [profileSection(), searchSection(), statisticSection()],
+          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+          children: [
+            profileSection(),
+            searchSection(),
+            statisticSection(context),
+          ],
         ),
       ),
     );
   }
 
-  Widget statisticSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Stats',
-          style: titleTextStyle.copyWith(
-            fontSize: 16,
+  Widget statisticSection(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Stats',
+            style: titleTextStyle.copyWith(
+              fontSize: 16,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 180,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: whiteColor,
+          const SizedBox(
+            height: 10,
           ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  statTitleItem('Strength', purpleColor),
-                  statTitleItem('Cardio', primaryColor),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          SizedBox(
-                            height: 50,
-                            width: 8,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: LinearProgressIndicator(
-                                backgroundColor: greyColor,
-                                valueColor: AlwaysStoppedAnimation(purpleColor),
-                                value: 1,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          SizedBox(
-                            height: 87,
-                            width: 8,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: LinearProgressIndicator(
-                                backgroundColor: greyColor,
-                                valueColor: AlwaysStoppedAnimation(primaryColor),
-                                value: 0.2,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        'Mon',
-                        style: contentTextStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              )
-            ],
-          ),
-        )
-      ],
+          Container(
+            height: 180,
+            width: MediaQuery.of(context).size.width - (2 * defaultMargin),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: whiteColor,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    statTitleItem('Strength', purpleColor),
+                    statTitleItem('Cardio', primaryColor),
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Mon',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Tue',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Wed',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Thu',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Fri',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Sat',
+                    ),
+                    DailyStatIndicatorItem(
+                      totalValue1: 50,
+                      totalValue2: 90,
+                      percentage1: 1,
+                      percentage2: 0.2,
+                      title: 'Sun',
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
