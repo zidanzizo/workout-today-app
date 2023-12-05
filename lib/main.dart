@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workout_today_app/presentation/page/home_page.dart';
+import 'package:workout_today_app/presentation/page/main_page.dart';
 import 'package:workout_today_app/shared/theme.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         scaffoldBackgroundColor: bodyBackgroundColor,
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const MainPage(),
+        '/home': (context) => const HomePage(),
       },
     );
   }
